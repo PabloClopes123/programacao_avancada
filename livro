@@ -1,0 +1,57 @@
+using System;
+using System.Collections.Generic;
+
+public class Livro
+{
+    public string Titulo { get; set; }
+    public string Autor { get; set; }
+    public string ISBN { get; set; }
+
+    public void ExibirDetalhes()
+    {
+        Console.WriteLine($"Titulo: {Titulo}");
+        Console.WriteLine($"Autor: {Autor}");
+        Console.WriteLine($"ISBN: {ISBN}");
+    }
+}
+
+public class Biblioteca
+{
+    private List<Livro> livros = new List<Livro>();
+
+    public void AdicionarLivro(Livro livro)
+    {
+        livros.Add(livro);
+    }
+
+    public void ExibirLivros()
+    {
+        foreach (var livro in livros)
+        {
+            Console.WriteLine("############");
+            livro.ExibirDetalhes();
+            Console.WriteLine("############");
+        }
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        var livro01 = new Livro { Titulo = "Em Busca do Tempo Perdido", Autor = "Marcel Proust", ISBN = "123_754" };
+        var livro02 = new Livro { Titulo = "Ulysses", Autor = "James Joyce", ISBN = "123_544" };
+        var livro03 = new Livro { Titulo = "Dom Quixote", Autor = "Miguel de Cervantes", ISBN = "145_774" };
+        var livro04 = new Livro { Titulo = "O Grande Gatsby", Autor = "F. Scott Fitzgerald", ISBN = "123_462" };
+        var livro05 = new Livro { Titulo = "Moby Dick", Autor = "Herman Melville", ISBN = "145_777" };
+
+        var biblioteca = new Biblioteca();
+        biblioteca.AdicionarLivro(livro01);
+        biblioteca.AdicionarLivro(livro02);
+        biblioteca.AdicionarLivro(livro03);
+        biblioteca.AdicionarLivro(livro04);
+        biblioteca.AdicionarLivro(livro05);
+
+        biblioteca.ExibirLivros();
+    }
+}
